@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    env_file:
+      - ./db/env.db
+    ports:
+      - "5432:5432"
