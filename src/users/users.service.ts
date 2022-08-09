@@ -12,7 +12,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
-    const user = await this.userRepo.create({
+    const user = this.userRepo.create({
       ...createUserDto,
     });
 
