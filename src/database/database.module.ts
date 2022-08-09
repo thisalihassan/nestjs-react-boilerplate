@@ -10,8 +10,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'secret',
       database: 'projectz',
-      entities: ['dist/**/*.entity.js'],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
+      migrations: ['dist/migrations/*{.ts,.js}'],
+      migrationsTableName: 'migrations_history',
+      migrationsRun: true,
     }),
   ],
 })
