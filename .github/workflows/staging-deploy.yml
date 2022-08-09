@@ -1,0 +1,19 @@
+name: deploy-to-staging
+on:
+  push:
+    branches:
+      # When someone push to `master` branch
+      - master
+
+jobs:
+  lint_and_build:
+    uses: ./.github/workflows/ci.yml
+  deploy:
+    needs: pre-commit_and_test
+    name: "Deploy to staging"
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Closed
+        run: |
+          echo An pull request was closed

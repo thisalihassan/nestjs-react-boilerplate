@@ -1,0 +1,37 @@
+exclude: src/migrations
+root: src
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.5.0
+    hooks:
+      - id: prettier
+        files: \.(ts|tsx|js|jsx|scss|css)$
+        exclude_types: [html]
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: "v8.3.0"
+    hooks:
+      - id: eslint
+        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        exclude: src/migrations/*
+        types: [file]
+        verbose: true
+        args:
+          - --color
+          - --fix
+        additional_dependencies:
+          - eslint
+          - eslint-plugin-import
+          - "@typescript-eslint/eslint-plugin"
+          - "@typescript-eslint/parser"
