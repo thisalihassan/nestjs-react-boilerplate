@@ -16,7 +16,7 @@ $ npm install
 # node 16 or higher
 $ docker-compose up -d
 $ docker-compose exec db bash 
-$ psql -U postgres
+$ psql -U postgres -d projectz
 
 ```
 [psql commands](https://www.postgresqltutorial.com/postgresql-administration/psql-commands/)
