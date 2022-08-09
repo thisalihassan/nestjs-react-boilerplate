@@ -5,6 +5,10 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "typeorm": "typeorm-ts-node-commonjs -d ./src/database/ormconfig.ts",
     "nest": "nest",
