@@ -12,8 +12,6 @@ $ npm install
 ## Database
 
 ```bash
-# npm 8 or higher
-# node 16 or higher
 $ docker-compose up -d
 $ docker-compose exec db bash
 $ psql -U postgres -d projectz
