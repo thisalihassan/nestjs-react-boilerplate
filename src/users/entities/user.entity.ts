@@ -1,8 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
-import { hash, compare } from 'bcrypt';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  BaseEntity,
+} from 'typeorm';
+import { hash } from 'bcrypt';
 
 @Entity('user')
-export class UserEntity {
+export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,20 +17,14 @@ export class UserEntity {
 
   @Column({ nullable: false })
   lastName: string;
+
   @Column({ type: 'varchar', nullable: false }) password: string;
 
   @Column({ default: true })
   isActive: boolean;
 
-  @Column({ default: false })
-  isDeleted: boolean;
-
   @BeforeInsert()
   async hashPassword(): Promise<void> {
     this.password = await hash(this.password, 10);
-  }
-
-  async comparePassword(attempt: string): Promise<boolean> {
-    return await compare(attempt, this.password);
   }
 }

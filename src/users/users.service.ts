@@ -21,16 +21,18 @@ export class UsersService {
     return user;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  findAll(): Promise<UserEntity[]> {
+    const users = this.userRepo.find();
+    return users;
   }
 
   findOne(id: number) {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    const user = this.userRepo.findOneBy({ id });
+    return user;
   }
 
   remove(id: number) {
