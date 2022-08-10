@@ -18,4 +18,4 @@ jobs:
     steps:
       - name: PR Closed
         run: |
-          echo An pull request was closed
+          echo a pull request was closed
