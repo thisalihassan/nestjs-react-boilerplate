@@ -8,7 +8,7 @@ on:
 jobs:
   lint_and_build:
     concurrency: 
-      group: ${{ github.head_ref || github.run_id }}
+      group: ${{ github.ref }}
     uses: ./.github/workflows/ci.yml
   deploy:
     needs: lint_and_build
