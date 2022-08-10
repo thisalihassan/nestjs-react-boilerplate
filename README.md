@@ -9,6 +9,13 @@
 $ npm install
 ```
 
+## HUSKY for linting staged files
+```bash
+# npm 8 or higher
+# node 16 or higher
+$ npm run prepare
+```
+
 ## Database
 
 ```bash
