@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
   deploy:
     needs: lint_and_build
-    name: "Deploy to staging"
+    name: "Deploy as staging"
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
