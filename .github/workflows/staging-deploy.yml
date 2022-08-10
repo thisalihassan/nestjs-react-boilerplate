@@ -7,10 +7,10 @@ on:
 
 jobs:
   lint_and_build:
-    concurrency: 
-      group: ${{ github.ref }}
     uses: ./.github/workflows/ci.yml
   deploy:
+    concurrency: 
+      group: ${{ github.ref }}
     needs: lint_and_build
     name: "Deploy to staging"
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
