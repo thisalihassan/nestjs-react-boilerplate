@@ -10,7 +10,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "typeorm": "typeorm-ts-node-commonjs -d ./src/database/ormconfig.ts",
+    "typeorm": "npx typeorm-ts-node-esm -d ./src/database/ormconfig.ts",
     "nest": "nest",
     "prepare": "husky install",
     "prebuild": "rimraf dist",
@@ -31,17 +31,18 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migration:generate": "npm run typeorm migration:generate",
+    "migration:generate": "npm run typeorm migration:generate ./src/migrations/migration",
     "migration:run": "npm run typeorm migration:run",
     "migration:revert": "npm run typeorm migration:revert",
     "migration:show": "npm run typeorm migration:show",
     "migration:create": "typeorm migration:create"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.0",
-    "@nestjs/core": "^8.0.0",
+    "@nestjs/common": "^9.0.8",
+    "@nestjs/core": "^9.0.8",
     "@nestjs/mapped-types": "*",
-    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/platform-express": "^9.0.8",
+    "@nestjs/swagger": "^6.0.5",
     "@nestjs/typeorm": "^9.0.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
@@ -55,10 +56,10 @@
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.1",
-    "@nestjs/testing": "^8.0.0",
+    "@nestjs/testing": "^9.0.8",
     "@types/express": "^4.17.13",
     "@types/jest": "27.5.0",
-    "@types/node": "^18.6.5",
+    "@types/node": "^18.7.1",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
@@ -72,10 +73,10 @@
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
     "ts-jest": "28.0.1",
-    "ts-loader": "^9.2.3",
-    "ts-node": "^10.0.0",
+    "ts-loader": "^9.3.1",
+    "ts-node": "^10.9.0",
     "tsconfig-paths": "4.1.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.7.4"
   },
   "jest": {
     "moduleFileExtensions": [

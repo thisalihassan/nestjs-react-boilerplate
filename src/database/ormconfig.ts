@@ -8,7 +8,7 @@ const myDataSource = new DataSource({
   password: 'secret',
   database: 'projectz',
   entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: true,
+  synchronize: false,
   migrations: ['dist/migrations/*{.ts,.js}'],
   migrationsTableName: 'migrations_history',
   migrationsRun: true,

@@ -29,6 +29,12 @@ $ psql -U postgres -d projectz
 ## Running the app
 
 ```bash
+# run migrations
+$ npm run migration:run
+
+# generate migrations
+$ npm run migration:generate
+
 # development
 $ npm run start
 
@@ -37,6 +43,8 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+if you get error on migrations try deleting dist folder
 ```
 
 ## Test

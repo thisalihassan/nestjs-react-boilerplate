@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -11,12 +13,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
       entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: isDev,
       migrations: ['dist/migrations/*{.ts,.js}'],
       migrationsTableName: 'migrations_history',
       migrationsRun: true,
       logger: 'advanced-console',
-      logging: process.env.NODE_ENV === 'development',
+      logging: isDev,
     }),
   ],
 })
