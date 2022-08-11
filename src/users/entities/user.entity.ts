@@ -20,6 +20,9 @@ export class UserEntity extends BaseEntity {
 
   @Column({ type: 'varchar', nullable: false }) password: string;
 
+  @Column({ type: 'varchar', nullable: false })
+  email: string;
+
   @Column({ default: true })
   isActive: boolean;
 
