@@ -16,6 +16,27 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - name: PR Closed
+      - name: Configure SSH
         run: |
-          echo a pull request was closed
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.STAGING_SSH_USER }}
+          SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+          SSH_HOST: ${{ secrets.STAGING_SSH_HOST }}
+
+      - name: Pull the latest code to the staging environment
+        run: ssh staging 'cd ProjectZ && git pull'
+
+      - name: Start containers
+        run: |  
+          ssh staging 'cd ProjectZ && docker-compose build'
+          ssh staging 'cd ProjectZ && docker-compose up -d'
