@@ -43,7 +43,7 @@
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^9.0.0",
-    "@nestjs/platform-express": "^9.0.8",
+    "@nestjs/platform-express": "^9.0.9",
     "@nestjs/swagger": "^6.0.5",
     "@nestjs/typeorm": "^9.0.0",
     "bcrypt": "^5.0.1",
