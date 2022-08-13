@@ -7,6 +7,13 @@ import {
 } from 'typeorm';
 import { hash } from 'bcrypt';
 
+export enum UserRole {
+  ADMIN = 'admin',
+  PRINCIPAL = 'principal',
+  TEACHER = 'teacher',
+  PEDAGOGY = 'pedagogy',
+}
+
 @Entity('user')
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -22,6 +29,13 @@ export class UserEntity extends BaseEntity {
 
   @Column({ type: 'varchar', nullable: false })
   email: string;
+
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    nullable: false,
+  })
+  role: UserRole;
 
   @Column({ default: true })
   isActive: boolean;

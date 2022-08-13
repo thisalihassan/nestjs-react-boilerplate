@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@src/app.module';
 import helmet from 'helmet';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as cookieParser from 'cookie-parser';
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 // import myDataSource from '@src/database/ormconfig';
@@ -19,6 +20,9 @@ async function bootstrap() {
   // .catch((err) => {
   //   console.error("Error during Data Source initialization:", err);
   // });
+
+  app.use(cookieParser());
+
   const config = new DocumentBuilder()
     .setTitle('ProjectZ')
     .setDescription('The ProjectZ API description')

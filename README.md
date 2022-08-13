@@ -19,7 +19,7 @@ $ npm run prepare
 ## Database
 
 ```bash
-$ docker-compose up -d
+$ docker-compose up db -d
 $ docker-compose exec db bash
 $ psql -U postgres -d projectz
 

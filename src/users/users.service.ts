@@ -1,4 +1,4 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '@src/users/dto/create-user.dto';
@@ -26,12 +26,13 @@ export class UsersService {
     return users;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(emailAddress: string) {
+    const user = this.userRepo.findOneBy({ email: emailAddress });
+    return user;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const user = this.userRepo.findOneBy({ id });
+    const user = this.userRepo.update(id, updateUserDto);
     return user;
   }
 

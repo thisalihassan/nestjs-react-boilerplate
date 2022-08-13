@@ -5,7 +5,7 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 @Injectable()
 export class ProjectService {
   create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project';
+    return `This action adds a new project, ${createProjectDto}`;
   }
 
   findAll() {
@@ -17,7 +17,7 @@ export class ProjectService {
   }
 
   update(id: number, updateProjectDto: UpdateProjectDto) {
-    return `This action updates a #${id} project`;
+    return `This action updates a #${id} project ${updateProjectDto}`;
   }
 
   remove(id: number) {
