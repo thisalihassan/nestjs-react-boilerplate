@@ -11,7 +11,7 @@ export class UsersService {
     private readonly userRepo: Repository<UserEntity>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
+  async create(createUserDto: CreateUserDto): Promise<UserEntity> {
     const user = this.userRepo.create({
       ...createUserDto,
     });

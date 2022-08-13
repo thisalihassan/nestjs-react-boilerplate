@@ -6,6 +6,8 @@ import {
   BaseEntity,
 } from 'typeorm';
 import { hash } from 'bcrypt';
+import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -14,20 +16,25 @@ export enum UserRole {
   PEDAGOGY = 'pedagogy',
 }
 
-@Entity('user')
+@Entity('user', { schema: 'public' })
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
+  @ApiProperty()
   id: number;
 
   @Column({ nullable: false })
+  @ApiProperty()
   firstName: string;
 
   @Column({ nullable: false })
   lastName: string;
 
-  @Column({ type: 'varchar', nullable: false }) password: string;
+  @Column({ type: 'varchar', nullable: false })
+  @Exclude()
+  password: string;
 
   @Column({ type: 'varchar', nullable: false })
+  @ApiProperty()
   email: string;
 
   @Column({
@@ -35,13 +42,19 @@ export class UserEntity extends BaseEntity {
     enum: UserRole,
     nullable: false,
   })
+  @ApiProperty({ enum: UserRole })
   role: UserRole;
 
   @Column({ default: true })
+  @ApiProperty()
   isActive: boolean;
 
   @BeforeInsert()
   async hashPassword(): Promise<void> {
     this.password = await hash(this.password, 10);
+  }
+
+  fullname(): string {
+    return `${this.firstName} ${this.lastName}`;
   }
 }

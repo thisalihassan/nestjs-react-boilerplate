@@ -22,7 +22,7 @@ export class AuthenticationService {
   }
 
   async validateUser(loginDto: LoginDto): Promise<UserEntity | null> {
-    const user = await this.usersService.findOne(loginDto.email);
+    const user = await this.usersService.findOne(loginDto.username);
     if (user && (await compare(loginDto.password, user.password))) {
       return user;
     }

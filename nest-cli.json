@@ -7,6 +7,7 @@
       "name": "@nestjs/swagger",
       "options": {
         "introspectComments": true,
+        "classValidatorShim": true,
         "dtoFileNameSuffix": [".dto.ts", ".entity.ts"]
       }
     }

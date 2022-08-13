@@ -1,29 +1,26 @@
-import {
-  Controller,
-  HttpCode,
-  Post,
-  Request,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Post, Request, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiResponse } from '@nestjs/swagger';
+import { UserEntity } from '@src/users/entities/user.entity';
 import { Response } from 'express';
 import { AuthenticationService } from './authentication.service';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('api')
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
-  @ApiOperation({ summary: 'User enters email password to login.' })
   @ApiResponse({
     status: 200,
-    description: 'User logged in.',
+    type: UserEntity,
   })
   @Post('login')
-  @HttpCode(200)
   @UseGuards(AuthGuard('local'))
-  async login(@Request() req, @Res({ passthrough: true }) response: Response) {
+  @ApiBody({ type: LoginDto })
+  async login(
+    @Request() req,
+    @Res({ passthrough: true }) response: Response<UserEntity>,
+  ) {
     const accessToken = await this.authenticationService.loginUser({
       userId: req.user.id,
       email: req.user.email,

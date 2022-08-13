@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@src/app.module';
 import helmet from 'helmet';
@@ -36,7 +37,7 @@ async function bootstrap() {
     { encoding: 'utf8' },
   );
 
-  SwaggerModule.setup('/', app, document);
+  SwaggerModule.setup('/api', app, document);
   app.use(helmet());
 
   app.enableCors();
