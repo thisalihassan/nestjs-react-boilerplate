@@ -34,7 +34,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 .env
-swagger.json
 
 /client/dist
 /client/build
