@@ -6,6 +6,7 @@
 ```bash
 # npm 8 or higher
 # node 16 or higher
+
 $ npm install
 ```
 
