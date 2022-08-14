@@ -11,9 +11,10 @@ $ npm install
 
 ## HUSKY for linting staged files
 ```bash
-# npm 8 or higher
-# node 16 or higher
-$ npm run prepare
+
+$ npm run husky
+$ npm run lint:fix
+
 ```
 
 ## Database
@@ -25,8 +26,9 @@ $ psql -U postgres -d projectz
 
 ```
 [psql commands](https://www.postgresqltutorial.com/postgresql-administration/psql-commands/)
+[docker cleanup](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes/)
 
-## Running the app
+## Migrations
 
 ```bash
 # run migrations
@@ -35,6 +37,16 @@ $ npm run migration:run
 # generate migrations
 $ npm run migration:generate
 
+# revert migrations
+$ npm run migration:revert
+
+if you get error on migrations try deleting dist folder, remove db container and volume
+
+```
+
+## Running the app
+
+```bash
 # development
 $ npm run start
 
@@ -44,7 +56,6 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 
-if you get error on migrations try deleting dist folder
 ```
 
 ## Test
