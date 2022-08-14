@@ -26,8 +26,8 @@ export class UsersService {
     return users;
   }
 
-  findOne(emailAddress: string) {
-    const user = this.userRepo.findOneBy({ email: emailAddress });
+  findOne(email: string) {
+    const user = this.userRepo.findOneBy({ email });
     return user;
   }
 
@@ -37,6 +37,7 @@ export class UsersService {
   }
 
   remove(id: number) {
+    this.userRepo.delete({ id });
     return `This action removes a #${id} user`;
   }
 }
