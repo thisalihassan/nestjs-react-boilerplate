@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
-@Controller()
+@Controller('/hello')
 export class AppController {
   @Get()
   getOpenApi(): string {
-    return 'Hello, world!';
+    return 'Hello, asworld!';
   }
 }

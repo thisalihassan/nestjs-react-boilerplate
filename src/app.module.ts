@@ -6,12 +6,12 @@ import { UsersModule } from '@src/users/users.module';
 import { ProjectModule } from '@src/project/project.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import { resolve } from 'path';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../', 'client/dist'),
+      rootPath: resolve('client/dist'),
     }),
     DatabaseModule,
     UsersModule,

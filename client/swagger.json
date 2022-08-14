@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/": {
+    "/hello": {
       "get": {
         "operationId": "AppController_getOpenApi",
         "parameters": [],

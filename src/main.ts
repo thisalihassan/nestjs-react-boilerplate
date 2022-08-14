@@ -33,7 +33,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   writeFileSync(
-    resolve(process.cwd(), 'swagger.json'),
+    resolve(process.cwd(), 'client/swagger.json'),
     JSON.stringify(document, null, 4),
     { encoding: 'utf8' },
   );

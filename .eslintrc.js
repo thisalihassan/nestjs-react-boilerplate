@@ -19,9 +19,10 @@ module.exports = {
   ignorePatterns: [
     '.eslintrc.js',
     'src/migrations/*',
-    '/client/dist',
-    '/client/build',
-    '/client/node_modules',
+    'client/dist',
+    'client/build',
+    'client/node_modules',
+    'client/src/store/reducers/generated.ts',
   ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
