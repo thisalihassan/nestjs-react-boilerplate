@@ -2,7 +2,7 @@
   "name": "project-z",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "thisalihassan",
   "private": true,
   "license": "UNLICENSED",
   "engines": {
@@ -44,6 +44,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.9",
+    "@nestjs/serve-static": "^3.0.0",
     "@nestjs/swagger": "^6.0.5",
     "@nestjs/typeorm": "^9.0.1",
     "bcrypt": "^5.0.1",

@@ -6,8 +6,12 @@ COPY package*.json ./
 
 RUN npm ci
 
-COPY . .
+COPY . ./
 
 RUN npm run build
+
+ENV NODE_ENV production
+
+RUN npm prune --production
 
 CMD [ "node", "dist/main.js" ]

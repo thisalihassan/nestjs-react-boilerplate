@@ -12,10 +12,17 @@ module.exports = {
   ],
   root: true,
   env: {
+    browser: true,
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js', 'src/migrations/*'],
+  ignorePatterns: [
+    '.eslintrc.js',
+    'src/migrations/*',
+    '/client/dist',
+    '/client/build',
+    '/client/node_modules',
+  ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

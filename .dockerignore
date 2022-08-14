@@ -1,7 +1,6 @@
 # compiled output
 /dist
 /node_modules
-
 # Logs
 logs
 *.log
@@ -38,3 +37,7 @@ test
 db
 .husky
 .github
+
+/client/dist
+/client/build
+/client/node_modules
