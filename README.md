@@ -20,6 +20,7 @@ $ npm run lint:fix
 ## Database
 
 ```bash
+$ docker-compose --version (must be 2.7.0)
 $ docker-compose up db -d
 $ docker-compose exec db bash
 $ psql -U postgres -d projectz
