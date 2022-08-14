@@ -27,6 +27,7 @@ export class UserEntity extends BaseEntity {
   firstName: string;
 
   @Column({ nullable: false })
+  @ApiProperty()
   lastName: string;
 
   @Column({ type: 'varchar', nullable: false })
@@ -46,7 +47,7 @@ export class UserEntity extends BaseEntity {
   role: UserRole;
 
   @Column({ default: true })
-  @ApiProperty()
+  @Exclude()
   isActive: boolean;
 
   @BeforeInsert()
@@ -54,7 +55,8 @@ export class UserEntity extends BaseEntity {
     this.password = await hash(this.password, 10);
   }
 
-  fullname(): string {
+  @ApiProperty()
+  get fullname(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 }

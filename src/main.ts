@@ -7,6 +7,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
+import { ValidationPipe } from '@nestjs/common';
 // import myDataSource from '@src/database/ormconfig';
 
 async function bootstrap() {
@@ -21,7 +22,7 @@ async function bootstrap() {
   // .catch((err) => {
   //   console.error("Error during Data Source initialization:", err);
   // });
-
+  app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
 
   const config = new DocumentBuilder()
