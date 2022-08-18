@@ -15,7 +15,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./production/Dockerfile
+      dockerfile: ./Dockerfile
       # context: .
       # # Only will build development stage from our dockerfile
       # target: development
