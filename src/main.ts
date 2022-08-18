@@ -8,20 +8,12 @@ import * as cookieParser from 'cookie-parser';
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { ValidationPipe } from '@nestjs/common';
-// import myDataSource from '@src/database/ormconfig';
+const PORT = process.env.PORT || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: console,
   });
-  // myDataSource
-  // .initialize()
-  // .then(() => {
-  //   console.log("Data Source has been initialized!");
-  // })
-  // .catch((err) => {
-  //   console.error("Error during Data Source initialization:", err);
-  // });
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
 
@@ -42,6 +34,6 @@ async function bootstrap() {
   app.use(helmet());
 
   app.enableCors();
-  await app.listen(3000);
+  await app.listen(PORT);
 }
 bootstrap();
