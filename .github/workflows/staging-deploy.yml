@@ -19,3 +19,18 @@ jobs:
           heroku_app_name: "nestjs-react-boilerplate"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
+          docker_build_args: |
+            NODE_ENV
+            POSTGRES_PASSWORD
+            POSTGRES_DB
+            POSTGRES_HOST
+            POSTGRES_PORT
+            JWT_SECRET
+        env:
+          NODE_ENV: "production"
+          POSTGRES_PASSWORD: "secret"
+          POSTGRES_DB: "projectz"
+          POSTGRES_USER: "postgres"
+          POSTGRES_PORT: 5432
+          POSTGRES_HOST: "db"
+          JWT_SECRET: "our-jwt-secret-key"
