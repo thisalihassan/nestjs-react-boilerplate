@@ -33,8 +33,6 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.env
-
 /client/dist
 /client/build
 /client/node_modules
